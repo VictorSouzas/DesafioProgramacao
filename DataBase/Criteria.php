@@ -6,24 +6,21 @@ namespace DataBase;
 		private $index;
 
 		public function __construct(){
-			$instruction = array();
-			$index = 0;
+			$this->instruction = array();
+			$this->index = -1;
 		}
 
-		public function setCriteria(string $field, $value, string $compare,
-						string $glue = ($glue != "") ? "AND": "OR"): void {
-			$instruction[$index]['field'] = $field;
-			$instruction[$index]['value'] = $value;
-			$instruction[$index]['compare'] = $compare;
-			$instruction[$index]['glue'] = $glue;
-			$index++;
+		public function setCriteria(string $field, $value, string $compare,string $glue = "AND"): void {
+			$criteria = array("field" => $field, "value" => $value, "compare"=> $compare, "glue"=> $glue);
+			array_push($this->instruction, $criteria);
+			$this->index++;
 		}
 
 		public function getCriteria() : string {
 			$instruct = "WHERE ";
-			for ($i=0; $i <= $index ; $i++) { 
+			for ($i=0; $i <= $this->index ; $i++) { 
 				$instruct .= $this->instruction[$i]['field']; 
-				$instruct .= $this->instruction[$i]['comapre'];
+				$instruct .= " ".$this->instruction[$i]['compare']." ";
 				$value = $this->instruction[$i]['value'];
 				if(is_numeric($value)){
 					$instruct .= "$value";
@@ -31,10 +28,10 @@ namespace DataBase;
 					$instruct .= "'{$value}'";
 				}
 
-				if($i == $index){
+				if($i == $this->index){
 					return $instruct;
 				}else {
-					$instruct .= " " .$this->instruction[$i]['glue'];
+					$instruct .= " " .$this->instruction[$i]['glue'] ." ";
 				}
 			}
 		}
