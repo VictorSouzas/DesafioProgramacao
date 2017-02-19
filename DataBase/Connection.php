@@ -1,7 +1,7 @@
 <?php
 namespace \DataBase\Connection;
 use PDO;
-	public class Connection{
+	class Connection{
 		private $database;
 		private $type;
 		private $host;
@@ -10,7 +10,7 @@ use PDO;
 		private $door;
 		private $conn;
 
-		public function __construct(string $database, string $type, string host, string $user, string $password, string $door){
+		public function __construct(string $database, string $type, string $host, string $user, string $password, string $door){
 			$this->database = $database;
 			$this->type = $type;
 			$this->host = $host;

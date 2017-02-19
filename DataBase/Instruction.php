@@ -1,5 +1,5 @@
 <?php
-	public class Instruction{
+	abstract class Instruction{
 		private $entity;
 		private $instruction;
 
