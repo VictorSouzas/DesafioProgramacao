@@ -33,7 +33,11 @@
 		protected function createValues(): void {
 			$this->valueStm .= "VALUES (";
 			foreach ($this->values as $value){
-				$this->valueStm .= "{$value},";
+				if(is_numeric($value)){
+					$this->valueStm .= "{$value},";
+				}else{
+					$this->valueStm .= "'{$value}',";
+				}
 			}
 			$this->valueStm = substr($this->valueStm, 0, -1);
 			$this->valueStm .= ")";
