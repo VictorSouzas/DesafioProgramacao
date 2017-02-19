@@ -1,5 +1,5 @@
 <?php
-namespace \DataBase\Connection;
+namespace DataBase;
 use PDO;
 	class Connection{
 		private $database;
