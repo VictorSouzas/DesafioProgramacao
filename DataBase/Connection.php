@@ -1,52 +1,35 @@
 <?php
 namespace DataBase;
 use PDO;
-	class Connection{
-		private $database;
-		private $type;
-		private $host;
-		private $user;
-		private $password;
-		private $door;
-		private $conn;
+class Connection{
+	
+	private function __construct(): void{}
 
-		public function __construct(string $database, string $type, string $host, string $user, string $password, string $door){
-			$this->database = $database;
-			$this->type = $type;
-			$this->host = $host;
-			$this->user = $user;
-			$this->password = $password;
-			$this->door = $door;
-		}
+	public function open(string $name): \PDO{
+		
+		$db;
+		$connStm = "";
 
-		public function setConn(): void {
-			$connStm = "";
-			if($type === "mysql"){
-				$connStm = "{$type}:dbname={$database};host={$host}:{$door}";
-			}
-			try{
-				$conn = new \PDO($connStm, $user, $password);
-			} catch(\PDO_Exception $e){
-				/**
-				 * Log Association here
-				 */
-			}
+		if(file_exists("../config/{$name}.init")){
+			$db = parse_ini_file("../config/{$name}.init");
+		}else {
+			throw new \Exception("File not found!");
 		}
-
-		public function getConn() {
-			if($conn != null){
-				return $conn;
-			}
-			setConn();
-			getConn();
+		
+		$database = $db['database'];
+		$type = $db['type'];
+		$host = $db['host'];
+		$user = $db['user'];
+		$password = $db['password'];
+		$port = $db['port'];
+		
+		if($type === "mysql"){
+			$connStm = "{$type}:dbname={$database};host={$host}:{$port}";
 		}
-
-		public function __desctruct(){
-			$conn = null;
-			/**
-			 * Log Association here
-			 */
-		}
+		$conn = new \PDO($connStm, $user, $password);
+		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		return $conn;
+	}
 
 
 
