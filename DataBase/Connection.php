@@ -3,20 +3,19 @@ namespace DataBase;
 use PDO;
 class Connection{
 	
-	private function __construct(): void{}
+	private function __construct(){}
 
 	public function open(string $name): \PDO{
 		
 		$db;
 		$connStm = "";
 
-		if(file_exists("../config/{$name}.init")){
-			$db = parse_ini_file("../config/{$name}.init");
+		if(file_exists("../config/{$name}.ini")){
+			$db = parse_ini_file("../config/{$name}.ini");
 		}else {
-			throw new \Exception("File not found!");
+			throw new \Exception("File not found!{$name}");
 		}
 		
-		$database = $db['database'];
 		$type = $db['type'];
 		$host = $db['host'];
 		$user = $db['user'];
@@ -24,7 +23,7 @@ class Connection{
 		$port = $db['port'];
 		
 		if($type === "mysql"){
-			$connStm = "{$type}:dbname={$database};host={$host}:{$port}";
+			$connStm = "{$type}:dbname={$name};host={$host}:{$port}";
 		}
 		$conn = new \PDO($connStm, $user, $password);
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

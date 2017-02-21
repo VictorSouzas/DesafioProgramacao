@@ -2,9 +2,9 @@
 namespace DataBase;
 class Transaction{
 	static private $conn;
-	private function __construct(): void{}
+	private function __construct(){}
 	public static function open(string $database): void{
-		if(empty($self::conn)){
+		if(empty(self::$conn)){
 			self::$conn = Connection::open($database);
 			self::$conn->beginTransaction();
 		}
@@ -15,14 +15,14 @@ class Transaction{
 	}
 	
 	public static function rollback(){
-		if(self::conn){
+		if(self::$conn){
 			self::$conn->rollBack();
 			self::$conn =  null;
 		}
 	}
 	
 	public static function close(){
-		if(self::conn){
+		if(self::$conn){
 			self::$conn->commit();
 			self::$conn = null;
 		}
