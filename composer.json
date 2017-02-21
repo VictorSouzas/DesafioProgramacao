@@ -3,8 +3,10 @@
     	"twig/twig" : "2.1.0"
     },
     "autoload": {
-        "psr-4": { "DataBase\\": "DataBase/",
-        			"ValeMobi\\": "src/" 
+        "psr-4": { 
+        			"DataBase\\": "DataBase/",
+        			"Orm\\": "src/Orm/",
+        			"Product\\": "src/Product/"
         		 }
     }
 }
