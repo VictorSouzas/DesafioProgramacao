@@ -10,10 +10,10 @@ class Connection{
 		$db;
 		$connStm = "";
 
-		if(file_exists("../config/{$name}.ini")){
-			$db = parse_ini_file("../config/{$name}.ini");
+		if(file_exists("../../config/{$name}.ini")){
+			$db = parse_ini_file("../../config/{$name}.ini");
 		}else {
-			throw new \Exception("File not found!{$name}");
+			throw new \Exception("File not found!");
 		}
 		
 		$type = $db['type'];

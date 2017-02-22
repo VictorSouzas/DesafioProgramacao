@@ -1,8 +1,6 @@
 <?php
 use \DataBase\Insert;
-
-include "../../DataBase/Instruction.php";
-include "../../DataBase/Insert.php";
+include '../../bootstrap.php';
 $insert = new Insert();
 $insert->setEntity("usuarios");
 $insert->setConlumnAsValue('nome', "Victor de Mattos Souza");
