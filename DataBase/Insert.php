@@ -16,12 +16,12 @@
 			$this->columnStm = "";
 		}
 		
-		public function setConlumnAsValue(string $column, string $value): void{
+		public function setConlumnAsValue(string $column, string $value){
 			array_push($this->columns, $column);
 			array_push($this->values, $value);
 		}
 		
-		protected function createConlumns(): void {
+		protected function createConlumns(){
 			$this->columnStm .= "(";
 			foreach ($this->columns as $column){
 				$this->columnStm .= "{$column},";
@@ -30,7 +30,7 @@
 			$this->columnStm .= ")";
 		}
 		
-		protected function createValues(): void {
+		protected function createValues() {
 			$this->valueStm .= "VALUES (";
 			foreach ($this->values as $value){
 				if(is_numeric($value)){
