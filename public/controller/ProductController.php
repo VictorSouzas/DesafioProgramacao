@@ -25,7 +25,7 @@ if($value <= 0){
 }
 
 try{
-	$product = new ProductCreate("trade_products");
+	$product = new ProductCreate("troca_mercadoria");
 	$product->setCodProd($cod);
 	$product->setName($name);
 	$product->setAmount($amount);
