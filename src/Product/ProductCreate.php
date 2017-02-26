@@ -20,7 +20,7 @@ class ProductCreate{
 	public function __construct(string $class){
 		$this->class = $class;
 	}
-	public function setCodProd(string $codProd): void{
+	public function setCodProd(string $codProd){
 			try{
 				Transaction::open($this->class);
 				$type = new ReadTable("product");
@@ -43,17 +43,17 @@ class ProductCreate{
 		$this->entity = $entity;
 	}
 	
-	public function setName(string $name): void{
+	public function setName(string $name){
 			$this->name = $name;
 	}
-	public function setAmount(int $amount): void{
+	public function setAmount(int $amount){
 			$this->amount = $amount;
 		
 	}
-	public function setValue(float $value): void{
+	public function setValue(float $value){
 			$this->value = $value;
 	}
-	public function setTypeProd(int $id): void{
+	public function setTypeProd(int $id){
 		try{
 			Transaction::open($this->class);
 			$type = new ReadTable("type_product");
@@ -70,7 +70,7 @@ class ProductCreate{
 			throw $ex;
 		}
 	}
-	public function setTypeOp(int $id): void{
+	public function setTypeOp(int $id){
 		try{
 			$type = new ReadTable("type_operations");
 			$criteria = new Criteria();
