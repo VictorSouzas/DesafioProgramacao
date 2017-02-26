@@ -7,7 +7,7 @@ $amount = trim(filter_input(INPUT_POST, "amount", FILTER_SANITIZE_NUMBER_INT));
 $value = filter_input(INPUT_POST, "value", FILTER_SANITIZE_NUMBER_FLOAT);
 $typeProd = filter_input(INPUT_POST, "typeProd", FILTER_SANITIZE_NUMBER_INT);
 $typeOp = filter_input(INPUT_POST, "typeOp", FILTER_SANITIZE_NUMBER_INT);
-if(($cod == "" || strlen($cod) < 3) || $cod >20 ){
+if(($cod == "" || strlen($cod) < 3) || strlen($cod) >20 ){
 	echo "O Codigo do produto deve ter mais de 3 caracteres";
 	exit();
 }
