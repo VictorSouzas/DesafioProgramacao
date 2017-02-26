@@ -21,7 +21,7 @@ class WriteTable{
 		}
 	}
 	
-	public function __set(string $prop, $value): void{
+	public function __set(string $prop, $value){
 		$this->data[$prop] = $value;
 	}
 
