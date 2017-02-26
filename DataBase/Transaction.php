@@ -3,7 +3,7 @@ namespace DataBase;
 class Transaction{
 	static private $conn;
 	private function __construct(){}
-	public static function open(string $database): void{
+	public static function open(string $database){
 		if(empty(self::$conn)){
 			self::$conn = Connection::open($database);
 			self::$conn->beginTransaction();
