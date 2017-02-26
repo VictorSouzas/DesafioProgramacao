@@ -5,7 +5,7 @@ class Connection{
 	
 	private function __construct(){}
 
-	public function open(string $name){
+	public static function open(string $name){
 		
 		$db;
 		$connStm = "";
