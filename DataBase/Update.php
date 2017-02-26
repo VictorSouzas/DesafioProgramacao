@@ -11,12 +11,12 @@ class Update extends Instruction{
 		$this->fieldsAndValues = array();
 	}
 	
-	public function setSetter(string $column, string $value): void{
+	public function setSetter(string $column, string $value){
 		$sett = array("column"=>$column, "value"=> $value);
 		array_push($this->fieldsAndValues, $sett);
 	}
 	
-	protected function makeSett(): void {
+	protected function makeSett() {
 		$this->fields = "";
 		foreach ($this->fieldsAndValues as $field){
 			$this->fields .= " {$field['column']} = ";
