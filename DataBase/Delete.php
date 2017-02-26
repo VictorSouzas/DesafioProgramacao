@@ -4,7 +4,7 @@ use DataBase\Instruction;
 class Delete extends Instruction{
 	private $criteria;
 	
-	public function setCriteria($criteria): void{
+	public function setCriteria($criteria){
 		$this->criteria = $criteria;
 	}
 	
