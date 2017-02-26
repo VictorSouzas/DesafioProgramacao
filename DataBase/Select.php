@@ -12,11 +12,11 @@ class Select extends Instruction {
 		$this->columns = array();
 		$this->criteria = "";
 	}
-	public function setColumn(string $column): void {
+	public function setColumn(string $column){
 		array_push ( $this->columns, $column );
 	}
 	
-	protected function makeColumns(): void{
+	protected function makeColumns(){
 		$this->columnStm = "";
 		foreach ($this->columns as $column){
 			$this->columnStm .= "{$column},";
@@ -24,7 +24,7 @@ class Select extends Instruction {
 		$this->columnStm = substr($this->columnStm, 0, -1);
 	}
 	
-	public function setCriteria(string $criteria): void {
+	public function setCriteria(string $criteria){
 		$this->criteria = $criteria;
 	}
 	
