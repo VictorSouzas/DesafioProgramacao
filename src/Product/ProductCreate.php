@@ -26,7 +26,7 @@ class ProductCreate{
 				$type = new ReadTable("product");
 				$criteria = new Criteria();
 				$criteria->setCriteria("cod_prod", $codProd, "=");
-				if($type->count($criteria) < 0){
+				if($type->count($criteria) > 0){
 					throw new \Exception("Product code already exists");
 				}
 				
