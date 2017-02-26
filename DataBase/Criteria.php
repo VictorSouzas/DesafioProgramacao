@@ -10,7 +10,7 @@ namespace DataBase;
 			$this->index = -1;
 		}
 
-		public function setCriteria(string $field, $value, string $compare,string $glue = "AND"): void {
+		public function setCriteria(string $field, $value, string $compare,string $glue = "AND") {
 			$criteria = array("field" => $field, "value" => $value, "compare"=> $compare, "glue"=> $glue);
 			array_push($this->instruction, $criteria);
 			$this->index++;
